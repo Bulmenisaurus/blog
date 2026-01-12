@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/a11y-light.min.css"
+        />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
+        <script>
+            hljs.highlightAll();
+        </script>
+        <style>
+            article {
+                margin: 0 auto;
+                max-width: 80ch;
+            }
+        </style>
+    </head>
+    <body>
+        <article>
+            <h1>Fibonacci in html</h1>
+            <p>
+                Inspired by the fantastic post
+                <a href="https://susam.net/fizz-buzz-in-css.html">Fizz Buzz in CSS</a> by Susam, I
+                was inspired to figure out what else you could do with html. Like Susam, I'll try to
+                minimize the total size of the code.
+            </p>
+            <p>
+                Unfortunately, we can't just rely on css <code>counter</code> for our code as there
+                is no way to increment a counter by a given amount, as the main case is for lists.
+                This means we need to switch to the more powerful <em>css variables</em>. These
+                variables can't be transferred across neighboring elements like css, so we need to
+                nest a bunch of elements so that inheritance can move the variable between elements.
+                For example, here is how you could make the powers of two in css:
+            </p>
+            <h2>Powers of two</h2>
+            <pre class="lang-html"><code>&lt;style&gt;
+  #outer {
+    --i: 1;
+  }
+
+  div.a {
+    --i2: calc(var(--i) * 2);
+  }
+
+  div.a::before {
+    counter-reset: X var(--i2);
+    content: counter(X);
+  }
+
+  div.b {
+    --i: calc(var(--i2) * 2);
+  }
+
+  div.b::before {
+    counter-reset: X var(--i);
+    content: counter(X);
+  }
+&lt;/style&gt;
+&lt;div id=&quot;outer&quot;&gt;
+  &lt;div class=&quot;a&quot;&gt;
+    &lt;div class=&quot;b&quot;&gt;
+      &lt;div class=&quot;a&quot;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+            And the live demo, if your browser supports it:
+            <style>
+                #outer {
+                    --i: 1;
+                }
+
+                div.a {
+                    --i2: calc(var(--i) * 2);
+                }
+
+                div.a::before {
+                    counter-reset: X var(--i2);
+                    content: counter(X);
+                }
+
+                div.b {
+                    --i: calc(var(--i2) * 2);
+                }
+
+                div.b::before {
+                    counter-reset: X var(--i);
+                    content: counter(X);
+                }
+            </style>
+            <div id="outer">
+                <div class="a">
+                    <div class="b">
+                        <div class="a"></div>
+                    </div>
+                </div>
+            </div>
+            <p>
+                Even for a simple sequence like this the process is quite involved! The main problem
+                is that variables in css cannot reference themselves. This means that instead of
+                <code>--i: calc(var(--i) * 2)</code>, we are forced to introduce a new temporary
+                variable <code>--i2</code> just to pass the valuable back and forth with.
+            </p>
+            <blockquote cite="https://www.w3.org/TR/css-variables-1/#cycles">
+                If there is a cycle in the dependency graph, all the custom properties in the cycle
+                are invalid at computed-value time.
+            </blockquote>
+            <p>
+                (from
+                <a href="https://www.w3.org/TR/css-variables-1/#cycles"
+                    >CSS Custom Properties for Cascading Variables Module Level 1</a
+                >). Another problem is that CSS is so strongly typed that you can't use variables
+                directly in <code>content</code>, we first have to cast it into a
+                <code>&lt;counter&gt;</code> with the help of <code>counter-reset</code>.
+            </p>
+            <p>
+                These basic techniques are already enough to make fibonacci, we just need three
+                variables instead of two. However, there are some more golf techniques that can help
+                us shrink the code.
+            </p>
+            <h2>Golfing</h2>
+            <p>
+                We can save on the selectors <code>div.a</code>, <code>div.b</code> by using single
+                character elements. For example, we can nest
+                <code>&lt;b&gt;&lt;u&gt;&lt;s&gt;</code>, shrinking the css and the html. However,
+                we also need to introduce additional styling to get rid of the bold, undernline, and
+                strikethrough styles:
+            </p>
+            <pre class="lang-css"><code>u, s, b { all: unset }</code></pre>
+            <p>
+                However fun the <code>all</code> property is, we can just also just save by using
+                invalid html elements like <code>&lt;x&gt;&lt;y&gt;&lt;z&gt;</code>, provided they
+                are never defined in some future html version. Another low hanging fruit is the
+                <code>counter-reset</code>, which you can eliminate by moving it into the
+                <code>::before</code> block at the cost of another variable.
+            </p>
+            <pre class="lang-css"><code>x { --a: ...; --d: var(--a) }
+y { --b: ...; --d: var(--b) }
+z { --c: ...; --d: var(--c) }
+x::before, y::before, z::before {
+    counter-reset: X var(--d);
+    content: counter(X)
+}</code></pre>
+            <p>
+                Another fun save is how to golf the final selector. We can't use
+                <code>*::before</code> because then <code>&lt;body&gt;</code> and
+                <code>&lt;html&gt;</code> will both have a zero in front (although
+                <code>--d</code> is undefined for them, the counter still initializes to zero). We
+                can use <code>:is(x,y,z)::before{ ... }</code>, but using css nesting is two
+                characters shorter: <code>x,y,z{&::before{ ... }}</code>
+            </p>
+            <p>
+                A final save is to skip initializing variable by using the two argument form of
+                <code>var(a, b)</code>, which provides a fallback value if a is undefined.
+            </p>
+
+            <h2>Conclusion</h2>
+            <p>
+                This brings us to the final code, weighing in at 300 bytes (including html) for 26
+                members of the sequence. Going farther than this seems to run in to some sort of
+                limit in the browsers I've tested.
+            </p>
+
+            <pre class="lang-html"><code>&lt;style&gt;
+x{--c:var(--a,0) + var(--b,1);--d:var(--b)}
+y{--a:var(--b,1) + var(--c);--d:var(--c)}
+z{--b:var(--c) + var(--a);--d:var(--a)}
+x,y,z{&amp;:before{display:flow;counter-reset:X calc(var(--d));content:counter(X)}}&lt;/style&gt;
+&lt;x&gt;&lt;y&gt;&lt;z&gt;&lt;x&gt;&lt;y&gt;&lt;z&gt;&lt;x&gt;&lt;y&gt;&lt;z&gt;&lt;x&gt;&lt;y&gt;&lt;z&gt;&lt;x&gt;&lt;y&gt;&lt;z&gt;&lt;x&gt;&lt;y&gt;&lt;z&gt;&lt;x&gt;&lt;y&gt;&lt;z&gt;&lt;x&gt;&lt;y&gt;&lt;z&gt;&lt;x&gt;&lt;y&gt;</code></pre>
+            <p>Demo:</p>
+            <style>
+                x {
+                    --c: var(--a, 0) + var(--b, 1);
+                    --d: var(--b);
+                }
+                y {
+                    --a: var(--b, 1) + var(--c);
+                    --d: var(--c);
+                }
+                z {
+                    --b: var(--c) + var(--a);
+                    --d: var(--a);
+                }
+                x,
+                y,
+                z {
+                    &:before {
+                        display: flow;
+                        counter-reset: X calc(var(--d));
+                        content: counter(X);
+                    }
+                }
+            </style>
+            <!-- prettier-ignore -->
+            <x><y><z><x><y><z><x><y><z><x><y><z><x><y><z><x><y><z><x><y><z><x><y><z><x><y></y></x></z></y></x></z></y></x></z></y></x></z></y></x></z></y></x></z></y></x></z></y></x></z></y></x>
+            <p>I would love to know if a shorter version exists!</p>
+        </article>
+    </body>
+</html>
