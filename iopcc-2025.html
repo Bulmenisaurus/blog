@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/a11y-light.min.css"
+        />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
+        <script>
+            hljs.highlightAll();
+        </script>
+        <style>
+            article {
+                margin: 0 auto;
+                max-width: 80ch;
+            }
+
+            pre {
+                white-space: pre-wrap;
+                overflow-wrap: anywhere;
+            }
+        </style>
+    </head>
+    <body>
+        <article>
+            <h1>2025 IOPCC</h1>
+            <p>
+                This year, me and Orthoplex decided to try to submit something for the 3rd
+                <a href="https://pyobfusc.com/">International Obfuscated Python Code Contest</a>.
+                You can see our submission here:
+                <a href="https://pyobfusc.com/submissions2025/1884885198/">quine.py</a>. I'll talk
+                about how we made it!
+            </p>
+            <details>
+                <summary>Open this to see our submission (hidden by default for brevity)</summary>
+                <pre class="lang-python"><code>#coding:1026
+#%M&#xF3;k]~h&#xEC;~MM]nM]]k%mkDk&#x562;kGkmk&#xD2;~}&#xC3;&#x562;&#xD2;}%E~}l}ND%G~}l}NG%&#x441;~NMM]~~M]]%&#x442;~&#x441;N&#x441;%&#x443;~&#x442;\&#x442;%&#x444;~&#x443;\&#x442;%&#x445;~&#x444;\&#x442;%&#x446;~&#x445;\&#x442;%&#x447;~&#x446;\&#x442;%&#x448;~&#x447;\&#x442;%&#x449;~&#x448;\&#x442;%&#x451;~&#x449;\&#x442;%&#x452;~&#x451;\&#x442;%&#x453;~&#x452;\&#x442;%&#x454;~&#x453;\&#x442;%&#x455;~&#x454;\&#x442;%&#x456;~&#x455;\&#x442;%&#x457;~&#x456;\&#x442;%&#x458;~&#x457;\&#x442;%&#x459;~&#x458;\&#x442;%&#x461;~&#x459;\&#x442;%&#x462;~&#x461;\&#x442;%[~Y~N&#x441;N&#x442;N&#x446;kN&#x441;N&#x442;N&#x446;N&#x447;kN&#x441;N&#x442;N&#x443;N&#x444;N&#x446;N&#x447;kN&#x443;N&#x446;N&#x447;kN&#x441;N&#x444;N&#x446;N&#x447;kN&#x442;N&#x443;N&#x444;N&#x446;N&#x447;kN&#x441;N&#x442;N&#x443;N&#x446;N&#x447;kN&#x442;N&#x444;N&#x445;N&#x446;kN&#x441;N&#x445;N&#x446;kN&#x445;N&#x446;kN&#x442;N&#x445;N&#x446;kN&#x442;N&#x443;N&#x445;N&#x446;kN&#x442;N&#x444;kN&#x441;N&#x442;N&#x446;kN&#x441;N&#x443;N&#x446;kN&#x441;N&#x443;N&#x446;kN&#x441;N&#x443;N&#x444;N&#x447;kN&#x441;N&#x442;N&#x445;N&#x446;N&#x447;N&#x448;kN&#x441;N&#x442;N&#x444;N&#x446;N&#x447;kN&#x441;N&#x443;N&#x444;N&#x445;N&#x447;kN&#x442;N&#x443;N&#x444;N&#x445;N&#x446;N&#x447;kN&#x444;N&#x446;N&#x447;kN&#x443;N&#x444;N&#x446;N&#x447;N&#x448;kN&#x442;N&#x443;N&#x444;N&#x445;N&#x446;N&#x447;kN&#x441;N&#x443;N&#x444;N&#x447;kN&#x441;N&#x443;N&#x444;N&#x447;kN&#x441;N&#x443;N&#x444;N&#x445;N&#x447;kN&#x442;N&#x443;N&#x444;N&#x446;N&#x447;kN&#x441;N&#x443;N&#x444;N&#x447;kN&#x441;N&#x443;N&#x444;N&#x445;N&#x447;kN&#x441;N&#x443;N&#x444;N&#x445;N&#x447;kN&#x441;N&#x442;N&#x444;N&#x446;N&#x447;kN&#x441;N&#x443;N&#x446;kN&#x441;N&#x443;N&#x446;kN&#x441;N&#x443;N&#x444;N&#x446;N&#x447;kN&#x441;N&#x442;N&#x444;N&#x446;N&#x447;kN&#x443;N&#x447;kN&#x441;N&#x442;N&#x444;N&#x446;N&#x447;kN&#x442;N&#x446;N&#x447;N&#x449;N&#x452;kN&#x441;N&#x442;N&#x444;N&#x446;N&#x447;kN&#x441;N&#x442;N&#x443;N&#x447;kN&#x441;N&#x442;N&#x444;N&#x446;N&#x447;kN&#x441;N&#x443;N&#x444;N&#x446;N&#x447;kN&#x441;N&#x442;N&#x444;N&#x446;N&#x447;kN&#x442;N&#x445;N&#x447;N&#x448;kN&#x442;N&#x443;N&#x444;N&#x445;N&#x446;N&#x447;kN&#x441;N&#x443;N&#x444;N&#x445;N&#x446;N&#x447;kN&#x441;N&#x442;N&#x447;N&#x448;kN&#x442;N&#x446;N&#x447;N&#x449;N&#x452;kN&#x442;N&#x445;N&#x447;N&#x448;kN&#x441;N&#x443;N&#x444;N&#x445;N&#x446;N&#x447;kN&#x441;N&#x443;N&#x446;kN&#x441;N&#x443;N&#x446;kN&#x441;N&#x443;N&#x447;kN&#x442;N&#x443;N&#x444;N&#x445;N&#x446;N&#x447;kN&#x441;N&#x443;N&#x444;N&#x445;N&#x446;N&#x447;kN&#x443;N&#x444;N&#x446;N&#x447;kN&#x441;N&#x443;N&#x444;N&#x445;N&#x446;N&#x447;kN&#x442;N&#x443;N&#x444;N&#x447;kN&#x443;N&#x447;kN&#x441;N&#x443;N&#x446;kN&#x441;N&#x443;N&#x446;kN&#x441;N&#x442;N&#x443;N&#x447;kN&#x442;N&#x443;N&#x444;N&#x445;N&#x446;N&#x447;kN&#x441;N&#x443;N&#x444;N&#x445;N&#x446;N&#x447;kN&#x443;N&#x444;N&#x446;N&#x447;kN&#x441;N&#x443;N&#x444;N&#x445;N&#x446;N&#x447;kN&#x442;N&#x443;N&#x444;N&#x447;kN&#x441;N&#x442;N&#x443;N&#x447;kN&#x441;N&#x443;N&#x446;kN&#x441;N&#x443;N&#x446;kN&#x441;N&#x447;N&#x452;kN&#x442;N&#x443;N&#x444;N&#x445;N&#x446;N&#x447;kN&#x442;N&#x443;N&#x444;N&#x447;kN&#x441;N&#x443;N&#x444;N&#x447;kN&#x441;N&#x443;N&#x444;N&#x447;kN&#x441;N&#x443;N&#x444;N&#x445;N&#x447;kN&#x442;N&#x443;N&#x444;N&#x445;N&#x446;N&#x447;kN&#x442;N&#x443;N&#x444;N&#x445;N&#x446;N&#x447;kN&#x441;N&#x443;N&#x444;N&#x447;kN&#x441;N&#x443;N&#x444;N&#x445;N&#x447;kN&#x441;N&#x443;N&#x444;N&#x445;N&#x447;kN&#x441;N&#x443;N&#x446;kN&#x441;N&#x443;N&#x446;kN&#x442;N&#x447;N&#x452;kN&#x442;N&#x443;N&#x444;N&#x445;N&#x446;N&#x447;kN&#x441;N&#x447;N&#x452;kN&#x442;N&#x443;N&#x444;N&#x447;kN&#x441;N&#x447;N&#x452;kN&#x441;N&#x443;N&#x446;kN&#x441;N&#x443;N&#x446;kN&#x441;N&#x442;N&#x447;N&#x452;kN&#x442;N&#x443;N&#x444;N&#x445;N&#x446;N&#x447;kN&#x442;N&#x447;N&#x452;kN&#x443;N&#x444;N&#x445;N&#x447;kN&#x442;N&#x447;N&#x452;kN&#x441;N&#x443;N&#x446;kN&#x441;N&#x443;N&#x446;kN&#x443;N&#x447;N&#x452;kN&#x442;N&#x443;N&#x444;N&#x445;N&#x446;N&#x447;kN&#x441;N&#x442;N&#x447;N&#x452;kN&#x443;N&#x444;N&#x445;N&#x447;kN&#x442;N&#x447;N&#x452;kN&#x441;N&#x443;N&#x446;kN&#x441;N&#x443;N&#x446;kN&#x441;N&#x443;N&#x447;N&#x452;kN&#x442;N&#x443;N&#x444;N&#x445;N&#x446;N&#x447;kN&#x443;N&#x447;N&#x452;kN&#x443;N&#x444;N&#x445;N&#x447;kN&#x442;N&#x447;N&#x452;kN&#x441;N&#x443;N&#x446;kN&#x441;N&#x443;N&#x446;kN&#x442;N&#x443;N&#x447;N&#x452;kN&#x442;N&#x443;N&#x444;N&#x445;N&#x446;N&#x447;kN&#x441;N&#x443;N&#x447;N&#x452;kN&#x443;N&#x444;N&#x445;N&#x447;kN&#x442;N&#x447;N&#x452;kN&#x441;N&#x443;N&#x446;kN&#x441;N&#x443;N&#x446;kN&#x441;N&#x442;N&#x443;N&#x447;N&#x452;kN&#x442;N&#x443;N&#x444;N&#x445;N&#x446;N&#x447;kN&#x442;N&#x443;N&#x447;N&#x452;kN&#x443;N&#x444;N&#x445;N&#x447;kN&#x442;N&#x447;N&#x452;kN&#x441;N&#x443;N&#x446;kN&#x441;N&#x443;N&#x446;kN&#x444;N&#x447;N&#x452;kN&#x442;N&#x443;N&#x444;N&#x445;N&#x446;N&#x447;kN&#x441;N&#x442;N&#x443;N&#x447;N&#x452;kN&#x443;N&#x444;N&#x445;N&#x447;kN&#x442;N&#x447;N&#x452;kN&#x441;N&#x443;N&#x446;kN&#x441;N&#x443;N&#x446;kN&#x441;N&#x444;N&#x447;N&#x452;kN&#x442;N&#x443;N&#x444;N&#x445;N&#x446;N&#x447;kN&#x444;N&#x447;N&#x452;kN&#x443;N&#x444;N&#x445;N&#x447;kN&#x442;N&#x447;N&#x452;kN&#x441;N&#x443;N&#x446;kN&#x441;N&#x443;N&#x446;kN&#x441;N&#x445;N&#x447;N&#x452;kN&#x442;N&#x443;N&#x444;N&#x445;N&#x446;N&#x447;kN&#x441;N&#x444;N&#x447;N&#x452;kN&#x443;N&#x444;N&#x445;N&#x447;kN&#x442;N&#x447;N&#x452;kN&#x441;N&#x443;N&#x446;kN&#x441;N&#x443;N&#x446;kN&#x442;N&#x445;N&#x447;N&#x452;kN&#x442;N&#x443;N&#x444;N&#x445;N&#x446;N&#x447;kN&#x441;N&#x445;N&#x447;N&#x452;kN&#x443;N&#x444;N&#x445;N&#x447;kN&#x442;N&#x447;N&#x452;kN&#x441;N&#x443;N&#x446;kN&#x441;N&#x443;N&#x446;kN&#x441;N&#x442;N&#x445;N&#x447;N&#x452;kN&#x442;N&#x443;N&#x444;N&#x445;N&#x446;N&#x447;kN&#x442;N&#x445;N&#x447;N&#x452;kN&#x443;N&#x444;N&#x445;N&#x447;kN&#x442;N&#x447;N&#x452;kN&#x441;N&#x443;N&#x446;kN&#x441;N&#x443;N&#x446;kN&#x443;N&#x445;N&#x447;N&#x452;kN&#x442;N&#x443;N&#x444;N&#x445;N&#x446;N&#x447;kN&#x441;N&#x442;N&#x445;N&#x447;N&#x452;kN&#x443;N&#x444;N&#x445;N&#x447;kN&#x442;N&#x447;N&#x452;kN&#x441;N&#x443;N&#x446;kN&#x441;N&#x443;N&#x446;kN&#x441;N&#x443;N&#x445;N&#x447;N&#x452;kN&#x442;N&#x443;N&#x444;N&#x445;N&#x446;N&#x447;kN&#x443;N&#x445;N&#x447;N&#x452;kN&#x443;N&#x444;N&#x445;N&#x447;kN&#x442;N&#x447;N&#x452;kN&#x441;N&#x443;N&#x446;kN&#x441;N&#x443;N&#x446;kN&#x442;N&#x443;N&#x445;N&#x447;N&#x452;kN&#x442;N&#x443;N&#x444;N&#x445;N&#x446;N&#x447;kN&#x441;N&#x443;N&#x445;N&#x447;N&#x452;kN&#x443;N&#x444;N&#x445;N&#x447;kN&#x442;N&#x447;N&#x452;kN&#x441;N&#x443;N&#x446;kN&#x441;N&#x443;N&#x446;kN&#x441;N&#x442;N&#x443;N&#x445;N&#x447;N&#x452;kN&#x442;N&#x443;N&#x444;N&#x445;N&#x446;N&#x447;kN&#x442;N&#x443;N&#x445;N&#x447;N&#x452;kN&#x443;N&#x444;N&#x445;N&#x447;kN&#x442;N&#x447;N&#x452;kN&#x441;N&#x443;N&#x446;kN&#x441;N&#x443;N&#x446;kN&#x444;N&#x445;N&#x447;N&#x452;kN&#x442;N&#x443;N&#x444;N&#x445;N&#x446;N&#x447;kN&#x441;N&#x442;N&#x443;N&#x445;N&#x447;N&#x452;kN&#x443;N&#x444;N&#x445;N&#x447;kN&#x442;N&#x447;N&#x452;kN&#x441;N&#x443;N&#x446;kN&#x441;N&#x443;N&#x446;kN&#x441;N&#x444;N&#x445;N&#x447;N&#x452;kN&#x442;N&#x443;N&#x444;N&#x445;N&#x446;N&#x447;kN&#x444;N&#x445;N&#x447;N&#x452;kN&#x443;N&#x444;N&#x445;N&#x447;kN&#x442;N&#x447;N&#x452;kN&#x441;N&#x443;N&#x446;kN&#x441;N&#x443;N&#x446;kN&#x441;N&#x446;N&#x447;N&#x452;kN&#x442;N&#x443;N&#x444;N&#x445;N&#x446;N&#x447;kN&#x441;N&#x444;N&#x445;N&#x447;N&#x452;kN&#x443;N&#x444;N&#x445;N&#x447;kN&#x442;N&#x447;N&#x452;kN&#x441;N&#x443;N&#x446;kN&#x441;N&#x443;N&#x446;kN&#x442;N&#x446;N&#x447;N&#x452;kN&#x442;N&#x443;N&#x444;N&#x445;N&#x446;N&#x447;kN&#x441;N&#x446;N&#x447;N&#x452;kN&#x443;N&#x444;N&#x445;N&#x447;kN&#x442;N&#x447;N&#x452;kN&#x441;N&#x443;N&#x446;kN&#x441;N&#x443;N&#x446;kN&#x441;N&#x442;N&#x444;N&#x445;N&#x447;kN&#x442;N&#x443;N&#x444;N&#x445;N&#x446;N&#x447;kN&#x441;N&#x444;N&#x445;N&#x447;kN&#x442;N&#x443;N&#x444;N&#x445;N&#x446;N&#x447;kN&#x441;N&#x443;N&#x446;kN&#x441;N&#x442;N&#x445;N&#x446;N&#x447;kN&#x441;N&#x443;N&#x446;kN&#x441;N&#x443;N&#x446;kN&#x441;N&#x447;N&#x448;N&#x452;kN&#x442;N&#x443;N&#x444;N&#x445;N&#x446;N&#x447;kN&#x442;N&#x443;N&#x444;N&#x447;kN&#x442;N&#x443;N&#x444;N&#x447;kN&#x442;N&#x443;N&#x444;N&#x447;kN&#x442;N&#x443;N&#x444;N&#x447;kN&#x442;N&#x443;N&#x444;N&#x447;kN&#x441;N&#x442;N&#x447;N&#x452;kN&#x442;N&#x443;N&#x444;N&#x447;kN&#x441;N&#x445;N&#x447;N&#x452;kN&#x441;N&#x443;N&#x446;kN&#x441;N&#x443;N&#x446;kN&#x441;N&#x442;N&#x444;N&#x445;N&#x446;N&#x447;kN&#x442;N&#x443;N&#x444;N&#x445;N&#x446;N&#x447;kN&#x442;N&#x443;N&#x444;N&#x447;kN&#x441;N&#x447;N&#x452;kN&#x442;N&#x443;N&#x444;N&#x447;kN&#x441;N&#x442;N&#x443;N&#x447;N&#x452;kN&#x442;N&#x443;N&#x444;N&#x447;kN&#x442;N&#x445;N&#x447;N&#x452;kN&#x441;N&#x443;N&#x446;kN&#x441;N&#x443;N&#x446;kN&#x443;N&#x447;kN&#x442;N&#x443;N&#x444;N&#x445;N&#x446;N&#x447;kN&#x441;N&#x443;N&#x444;N&#x447;kN&#x441;N&#x443;N&#x444;N&#x447;kN&#x441;N&#x443;N&#x444;N&#x445;N&#x447;kN&#x442;N&#x443;N&#x444;N&#x445;N&#x446;N&#x447;kN&#x442;N&#x443;N&#x444;N&#x445;N&#x446;N&#x447;kN&#x441;N&#x443;N&#x444;N&#x447;kN&#x441;N&#x443;N&#x444;N&#x445;N&#x447;kN&#x441;N&#x443;N&#x444;N&#x445;N&#x447;kN&#x441;N&#x443;N&#x446;kN&#x441;N&#x443;N&#x446;kN&#x442;N&#x443;N&#x447;kN&#x442;N&#x443;N&#x447;kN&#x442;N&#x443;N&#x444;N&#x445;N&#x446;N&#x447;kN&#x441;N&#x443;N&#x444;N&#x445;N&#x446;N&#x447;kN&#x441;N&#x443;N&#x444;N&#x445;N&#x446;N&#x447;kN&#x441;N&#x443;N&#x446;kN&#x441;N&#x443;N&#x446;kN&#x444;N&#x446;N&#x447;kN&#x443;N&#x444;N&#x446;N&#x447;N&#x451;kN&#x442;N&#x443;N&#x444;N&#x445;N&#x446;N&#x447;kN&#x441;N&#x447;N&#x448;N&#x452;kN&#x441;N&#x442;N&#x444;N&#x446;N&#x447;kN&#x441;N&#x443;N&#x446;kN&#x441;N&#x443;N&#x446;kN&#x443;N&#x444;N&#x445;N&#x447;kN&#x441;N&#x443;N&#x444;N&#x447;kN&#x441;N&#x443;N&#x444;N&#x447;kN&#x441;N&#x443;N&#x444;N&#x447;kN&#x442;N&#x447;kN&#x442;N&#x444;N&#x445;N&#x446;N&#x447;kN&#x442;N&#x443;N&#x444;N&#x445;N&#x446;N&#x447;kN&#x441;N&#x442;N&#x444;N&#x445;N&#x447;kN&#x444;N&#x446;N&#x447;kN&#x443;N&#x444;N&#x446;N&#x447;N&#x448;kN&#x441;N&#x443;N&#x444;N&#x445;N&#x447;kN&#x441;N&#x442;N&#x444;N&#x446;N&#x447;kN&#x441;N&#x443;N&#x444;N&#x447;kN&#x441;N&#x442;N&#x444;N&#x445;N&#x447;kN&#x442;N&#x444;N&#x445;N&#x446;N&#x447;kN&#x442;N&#x443;N&#x444;N&#x445;N&#x446;N&#x447;kN&#x441;N&#x442;N&#x444;N&#x445;N&#x447;kN&#x444;N&#x446;N&#x447;kN&#x443;N&#x447;kN&#x442;N&#x444;N&#x445;N&#x446;N&#x447;kN&#x443;N&#x444;N&#x446;N&#x447;N&#x451;kN&#x441;N&#x443;N&#x444;N&#x445;N&#x447;kN&#x441;N&#x442;N&#x444;N&#x446;N&#x447;kN&#x441;N&#x443;N&#x444;N&#x447;kN&#x442;N&#x443;N&#x447;kN&#x442;N&#x443;N&#x447;kN&#x442;N&#x444;N&#x445;N&#x446;N&#x447;kN&#x442;N&#x443;N&#x444;N&#x445;N&#x446;N&#x447;kN&#x442;N&#x443;N&#x447;kN&#x442;N&#x443;N&#x447;kN&#x442;N&#x443;N&#x444;N&#x447;kN&#x441;N&#x443;N&#x447;kN&#x443;N&#x444;N&#x446;N&#x447;kN&#x442;N&#x447;kN&#x441;N&#x443;N&#x444;N&#x445;N&#x447;kN&#x441;N&#x443;N&#x444;N&#x445;N&#x447;kN&#x443;N&#x444;N&#x445;N&#x447;kN&#x441;N&#x444;N&#x445;N&#x448;N&#x449;N&#x452;N&#x455;N&#x456;N&#x461;kN&#x444;N&#x446;N&#x447;kN&#x441;N&#x443;N&#x444;N&#x446;N&#x447;kN&#x441;N&#x443;N&#x445;N&#x447;N&#x451;N&#x456;N&#x457;N&#x459;N&#x461;N&#x462;kN&#x441;N&#x443;N&#x444;N&#x445;N&#x446;N&#x447;kN&#x441;N&#x442;N&#x443;N&#x444;N&#x446;N&#x447;kN&#x441;N&#x443;N&#x444;N&#x445;N&#x446;N&#x447;kN&#x443;N&#x444;N&#x445;N&#x447;kN&#x441;N&#x447;N&#x448;N&#x452;kN&#x441;N&#x443;N&#x444;N&#x445;N&#x447;kN&#x441;N&#x442;N&#x444;N&#x446;N&#x447;kN&#x441;N&#x443;N&#x446;kN&#x441;N&#x443;N&#x446;kN&#x441;N&#x442;N&#x444;N&#x445;N&#x447;kN&#x442;N&#x443;N&#x444;N&#x445;N&#x446;N&#x447;kN&#x441;N&#x444;N&#x445;N&#x447;kN&#x441;N&#x443;N&#x446;kN&#x441;N&#x443;N&#x446;kN&#x442;N&#x443;N&#x447;kN&#x442;N&#x443;N&#x444;N&#x445;N&#x446;N&#x447;kN&#x441;N&#x443;N&#x444;N&#x445;N&#x446;N&#x447;kN&#x441;N&#x443;N&#x444;N&#x445;N&#x446;N&#x447;kN&#x441;N&#x443;N&#x446;kN&#x441;N&#x443;N&#x446;kN&#x443;N&#x447;kN&#x442;N&#x443;N&#x444;N&#x445;N&#x446;N&#x447;kN&#x441;N&#x443;N&#x444;N&#x447;kN&#x441;N&#x443;N&#x444;N&#x447;kN&#x441;N&#x443;N&#x444;N&#x445;N&#x447;kN&#x442;N&#x443;N&#x444;N&#x445;N&#x446;N&#x447;kN&#x442;N&#x443;N&#x444;N&#x445;N&#x446;N&#x447;kN&#x441;N&#x443;N&#x444;N&#x447;kN&#x441;N&#x443;N&#x444;N&#x445;N&#x447;kN&#x441;N&#x443;N&#x444;N&#x445;N&#x447;kN&#x441;N&#x443;N&#x446;kN&#x441;N&#x443;N&#x446;kN&#x443;N&#x444;N&#x445;N&#x447;kN&#x441;N&#x443;N&#x444;N&#x447;kN&#x441;N&#x443;N&#x444;N&#x447;kN&#x441;N&#x443;N&#x444;N&#x447;kN&#x442;N&#x447;kN&#x442;N&#x444;N&#x445;N&#x446;N&#x447;kN&#x442;N&#x443;N&#x444;N&#x445;N&#x446;N&#x447;kN&#x441;N&#x442;N&#x444;N&#x445;N&#x447;kN&#x444;N&#x446;N&#x447;kN&#x443;N&#x444;N&#x446;N&#x447;N&#x448;kN&#x441;N&#x443;N&#x444;N&#x445;N&#x447;kN&#x441;N&#x442;N&#x444;N&#x446;N&#x447;kN&#x441;N&#x443;N&#x444;N&#x447;kN&#x441;N&#x442;N&#x444;N&#x445;N&#x447;kN&#x442;N&#x444;N&#x445;N&#x446;N&#x447;kN&#x442;N&#x443;N&#x444;N&#x445;N&#x446;N&#x447;kN&#x441;N&#x442;N&#x444;N&#x445;N&#x447;kN&#x444;N&#x446;N&#x447;kN&#x443;N&#x447;kN&#x442;N&#x444;N&#x445;N&#x446;N&#x447;kN&#x443;N&#x444;N&#x446;N&#x447;N&#x451;kN&#x441;N&#x443;N&#x444;N&#x445;N&#x447;kN&#x441;N&#x442;N&#x444;N&#x446;N&#x447;kN&#x441;N&#x443;N&#x444;N&#x447;kN&#x441;N&#x445;N&#x447;kN&#x442;N&#x444;N&#x445;N&#x446;N&#x447;kN&#x442;N&#x443;N&#x444;N&#x445;N&#x446;N&#x447;kN&#x441;N&#x443;N&#x444;N&#x445;N&#x446;N&#x447;kN&#x441;N&#x443;N&#x444;N&#x445;N&#x446;N&#x447;kN&#x441;N&#x443;N&#x444;N&#x445;N&#x447;kN&#x441;N&#x442;N&#x444;N&#x446;N&#x447;kN&#x441;N&#x443;N&#x444;N&#x447;kN&#x442;N&#x445;N&#x447;kN&#x442;N&#x444;N&#x445;N&#x446;N&#x447;kN&#x442;N&#x443;N&#x444;N&#x445;N&#x446;N&#x447;kN&#x441;N&#x447;N&#x452;kN&#x441;N&#x443;N&#x444;N&#x445;N&#x447;kN&#x441;N&#x442;N&#x444;N&#x446;N&#x447;kN&#x441;N&#x443;N&#x444;N&#x447;kN&#x441;N&#x442;N&#x445;N&#x447;kN&#x442;N&#x444;N&#x445;N&#x446;N&#x447;kN&#x442;N&#x443;N&#x444;N&#x445;N&#x446;N&#x447;kN&#x442;N&#x447;N&#x452;kN&#x446;N&#x447;kN&#x442;N&#x447;N&#x452;kN&#x441;N&#x443;N&#x444;N&#x445;N&#x447;kN&#x441;N&#x442;N&#x444;N&#x446;N&#x447;kN&#x441;N&#x443;N&#x444;N&#x447;kN&#x443;N&#x444;N&#x445;N&#x447;kN&#x441;N&#x443;N&#x444;N&#x447;kN&#x441;N&#x443;N&#x444;N&#x447;kN&#x441;N&#x443;N&#x444;N&#x447;kN&#x441;N&#x443;N&#x444;N&#x447;kN&#x441;N&#x445;N&#x447;kN&#x442;N&#x444;N&#x445;N&#x446;N&#x447;kN&#x442;N&#x443;N&#x444;N&#x445;N&#x446;N&#x447;kN&#x441;N&#x445;N&#x447;kN&#x442;N&#x443;N&#x444;N&#x447;kN&#x441;N&#x443;N&#x444;N&#x447;kN&#x442;N&#x446;N&#x447;N&#x449;N&#x452;kN&#x442;N&#x443;N&#x444;N&#x447;kN&#x441;N&#x443;N&#x447;kN&#x443;N&#x444;N&#x446;N&#x447;kN&#x441;N&#x443;N&#x444;N&#x447;kN&#x441;N&#x442;N&#x444;N&#x445;N&#x446;N&#x447;kN&#x442;N&#x443;N&#x444;N&#x447;kN&#x441;N&#x442;N&#x445;N&#x447;kN&#x442;N&#x443;N&#x444;N&#x447;kN&#x441;N&#x442;N&#x445;N&#x447;kN&#x441;N&#x446;N&#x447;kN&#x441;N&#x446;N&#x447;kN&#x441;N&#x443;N&#x444;N&#x447;kN&#x441;N&#x447;N&#x452;kN&#x442;N&#x443;N&#x444;N&#x447;kN&#x443;N&#x447;N&#x452;kN&#x441;N&#x443;N&#x444;N&#x445;N&#x447;kN&#x443;N&#x444;N&#x445;N&#x447;kN&#x441;N&#x443;N&#x444;N&#x447;kN&#x441;N&#x447;N&#x452;kN&#x442;N&#x443;N&#x444;N&#x447;kN&#x442;N&#x447;N&#x452;kN&#x442;N&#x443;N&#x444;N&#x447;kN&#x441;N&#x442;N&#x447;N&#x452;kN&#x441;N&#x443;N&#x444;N&#x445;N&#x447;kN&#x441;N&#x443;N&#x444;N&#x445;N&#x447;kN&#x441;N&#x443;N&#x444;N&#x445;N&#x447;kN&#x443;N&#x444;N&#x445;N&#x447;kN&#x441;N&#x443;N&#x444;N&#x447;kN&#x442;N&#x445;N&#x447;kN&#x445;N&#x447;kN&#x442;N&#x447;kN&#x442;N&#x443;N&#x444;N&#x446;N&#x447;kN&#x441;N&#x442;N&#x445;N&#x446;N&#x447;N&#x448;kN&#x441;N&#x443;N&#x444;N&#x445;N&#x447;kN&#x441;N&#x443;N&#x444;N&#x445;N&#x447;kN&#x441;N&#x442;N&#x444;N&#x446;N&#x447;kN&#x441;N&#x443;N&#x444;N&#x447;kN&#x442;N&#x445;N&#x447;kN&#x442;N&#x444;N&#x445;N&#x446;N&#x447;kN&#x442;N&#x443;N&#x444;N&#x445;N&#x446;N&#x447;kN&#x442;N&#x445;N&#x447;kN&#x443;N&#x444;N&#x445;N&#x447;kN&#x442;N&#x447;N&#x452;kN&#x441;N&#x443;N&#x444;N&#x445;N&#x447;kN&#x441;N&#x442;N&#x444;N&#x446;N&#x447;kN&#x441;N&#x443;N&#x444;N&#x447;kN&#x441;N&#x442;N&#x445;N&#x447;kN&#x442;N&#x444;N&#x445;N&#x446;N&#x447;kN&#x442;N&#x443;N&#x444;N&#x445;N&#x446;N&#x447;kN&#x441;N&#x442;N&#x445;N&#x447;kN&#x442;N&#x443;N&#x444;N&#x447;kN&#x441;N&#x447;N&#x452;kN&#x441;N&#x443;N&#x444;N&#x445;N&#x447;kN&#x441;N&#x443;N&#x444;N&#x445;N&#x447;kN&#x441;N&#x443;N&#x444;N&#x445;N&#x447;kN&#x443;N&#x444;N&#x445;N&#x447;kN&#x441;N&#x444;N&#x445;N&#x448;N&#x449;N&#x452;N&#x455;N&#x456;N&#x461;kN&#x444;N&#x446;N&#x447;kN&#x441;N&#x443;N&#x444;N&#x446;N&#x447;kN&#x441;N&#x443;N&#x445;N&#x447;N&#x451;N&#x456;N&#x457;N&#x459;N&#x461;N&#x462;kN&#x441;N&#x443;N&#x444;N&#x445;N&#x446;N&#x447;kN&#x441;N&#x442;N&#x443;N&#x444;N&#x446;N&#x447;kN&#x441;N&#x443;N&#x444;N&#x445;N&#x446;N&#x447;kN&#x443;N&#x444;N&#x445;N&#x447;kN&#x442;N&#x443;N&#x447;N&#x452;kN&#x441;N&#x443;N&#x444;N&#x445;N&#x447;kN&#x441;N&#x442;N&#x444;N&#x446;N&#x447;kN&#x441;N&#x443;N&#x444;N&#x445;N&#x447;kN&#x441;N&#x442;N&#x444;N&#x446;N&#x447;kN&#x441;N&#x443;N&#x444;N&#x447;kN&#x442;N&#x443;N&#x447;kN&#x442;N&#x444;N&#x445;N&#x446;N&#x447;kN&#x442;N&#x443;N&#x444;N&#x445;N&#x446;N&#x447;kN&#x442;N&#x443;N&#x447;kN&#x442;N&#x443;N&#x444;N&#x447;kN&#x441;N&#x445;N&#x447;kN&#x442;N&#x443;N&#x444;N&#x447;kN&#x442;N&#x445;N&#x447;N&#x448;kN&#x441;N&#x443;N&#x444;N&#x445;N&#x447;kN&#x441;N&#x443;N&#x444;N&#x445;N&#x447;kN&#x443;N&#x444;N&#x445;N&#x447;kN&#x441;N&#x444;N&#x445;N&#x448;N&#x449;N&#x452;N&#x455;N&#x456;N&#x461;kN&#x444;N&#x446;N&#x447;kN&#x441;N&#x443;N&#x444;N&#x446;N&#x447;kN&#x441;N&#x443;N&#x445;N&#x447;N&#x451;N&#x456;N&#x457;N&#x459;N&#x461;N&#x462;kN&#x441;N&#x443;N&#x444;N&#x445;N&#x446;N&#x447;kN&#x441;N&#x442;N&#x443;N&#x444;N&#x446;N&#x447;kN&#x441;N&#x443;N&#x444;N&#x445;N&#x446;N&#x447;kN&#x443;N&#x444;N&#x445;N&#x447;kN&#x441;N&#x447;N&#x448;N&#x452;kN&#x441;N&#x443;N&#x444;N&#x445;N&#x447;kN&#x441;N&#x442;N&#x444;N&#x446;N&#x447;kN&#x441;N&#x443;N&#x446;kN&#x441;N&#x443;N&#x446;kN&#x444;N&#x446;N&#x447;kN&#x443;N&#x444;N&#x446;N&#x447;N&#x448;kN&#x442;N&#x443;N&#x444;N&#x445;N&#x446;N&#x447;kN&#x442;N&#x443;N&#x447;kN&#x442;N&#x443;N&#x447;kN&#x443;N&#x444;N&#x446;N&#x447;kN&#x442;N&#x443;N&#x447;kN&#x441;N&#x442;N&#x444;N&#x446;N&#x447;kN&#x441;N&#x443;N&#x446;kN&#x441;N&#x443;N&#x446;kN&#x444;N&#x447;kN&#x441;N&#x443;N&#x444;N&#x446;N&#x447;kN&#x442;N&#x444;N&#x445;N&#x446;N&#x447;kN&#x443;N&#x444;N&#x447;N&#x448;kN&#x444;N&#x446;N&#x447;kN&#x443;N&#x444;N&#x446;N&#x447;N&#x448;k%&#x4C1;~NNNNN&#x443;N&#x451;%{~N&#x441;N&#x447;N&#x452;%D~MM]~~M]]%FF~}}%h&#x26C;~&#x4C1;k%\MMMBz~[h&#xEC;]kM[z~[hDz&#x26C;]kMFFz~FFNElB]]\&#x46599;hm&#xEC255;}o}\&#x4C1;]k%[~Y%F~}}%D~MM]~~M]]%\MMMBz~[h&#xEC;]kM[z~[hDz&#x26C;]kMQz~}}]kMRz~&#x441;]kMSz~&#x442;&#x60;&#x442;]kM\MMMMQz~QNM&#x562;NElM{NSNSaaM&#x441;N&#x444;]\M&#x441;N&#x442;N&#x443;]]]\MRPBn&#xF3;]]kMRz~R\&#x442;]kMSz~SN&#x441;]]]\&#x46599;hm&#xEC255;}o}\&#x446;]k]kMFz~FNQN&#xD2;]]\&#x46599;hm&#xEC255;}o}\&#x4C1;]k%h&#xEC;~FFlFk%Hmz&#xCC;h&#xEC;</code></pre>
+            </details>
+            <p>
+                Note that the entire is just two lines of code, each a comment. Desipte this,
+                running the above python results in the following output:
+            </p>
+            <pre class="lang-plain"><code>Traceback (most recent call last):
+  File "submission.py", line 38, in &lt;module&gt;
+    {_:C}[C]
+    ~~~~~^^^
+KeyError: '#coding:1026\n#%Mók]~hì ... zÌhì'</code></pre>
+            <p>
+                With the <code>KeyError</code> containing the entire contents of the file, escaped.
+                In this post I'll talk about how this little snippet of code works.
+            </p>
+            <h2>Codecs</h2>
+            <p>
+                A quick background on what the <code>coding:1026</code> declaration actually means:
+                Briefly, python supports
+                <a
+                    href="https://docs.python.org/3.14/reference/lexical_analysis.html#encoding-declarations"
+                    >declaring the encoding</a
+                >
+                of source files. You may have seen this like this:
+            </p>
+            <pre class="lang-python"><code># -*- coding: UTF-8 -*-</code></pre>
+            <p>or like this:</p>
+            <pre class="lang-python"><code># vim:fileencoding=UTF-8</code></pre>
+            <p>
+                There are a multitude of supported codecs. Most of these coincide with ascii, making
+                them somewhat unhelpful for obfuscation. There are however a set of code page
+                encodings that remap most ascii characters, making them ideal for our purposes.
+                <code>coding:1026</code> is what we used in our final submission, which is a
+                shorthand for the
+                <a href="https://www.compart.com/en/unicode/charsets/IBM1026">IBM1026</a> encoding.
+            </p>
+            <h2>Python</h2>
+            <p>
+                So how do we code in this new variant of python? It's really easy actually, we just
+                need to make sure our source code decodes to regular python.
+            </p>
+            <pre class="lang-python"><code>#coding:1026
+{code.encode('1026').decode('latin1')}
+            </code></pre>
+            <p>
+                The problem is that the vast majority of the time this is not valid utf8. We decided
+                to restrict ourselves to valid utf8 source code as a challenge and for much better
+                portability.
+                <strong
+                    >This makes the main challenge of the program, making a quine under the
+                    restrictions of another codepage.
+                </strong>
+            </p>
+            <p>
+                With the utf8 restriction, the format of our programs is highly limited. While we
+                still have access to most operators, there is no way to construct a valid utf8
+                string that will create more than 3 lowercase letters in a row, meaning we cannot
+                access any builtins. Bruteforcing all unicode characters, we get something like:
+            </p>
+            <pre><code>...
+0]]]
+0]]a
+0]]|
+0]]}
+0]a]
+0]aa
+0]a|
+0]a}
+0]|]
+0]|a
+0]|}
+0]}]
+0]}a
+0]}|
+0]}}
+0a]]
+0a]a
+0a]|
+0a]}
+0aa]
+0aaa
+0aa|
+0aa}
+0a|]
+0a|a
+0a|}
+0a}]
+0a}a
+0a}|
+0a}}
+...</code></pre>
+            <p>
+                Notably there was no way to get numbers by themselves (they had to be part of these
+                multi-character combinations, as the bytes they were part of were only valid in
+                multi-byte unicode). For example the character 0 maps to <code>\xf0</code>, which
+                can only appear as byte one of a four byte unicode character like 𬌬.
+            </p>
+            <h2>Quine</h2>
+            <p>
+                Writing quines is actually not too bad once you know the trick. One such method is
+                with the following general form:
+            </p>
+            <pre class="lang-python"><code>
+... prefix ...
+data = {encoded data}
+... suffix ...
+print(decode(data).format(representation(data)))
+            </code></pre>
+            <p>
+                where <code>{encoded data}</code> would be some data structure containing everything
+                but with a slot to put the final data array in.
+            </p>
+            <p>A python quine written in this form looks like</p>
+            <pre
+                class="lang-python"
+            ><code>data = [100, 97, 116, 97, 32, 61, 32, 37, 115, 10, 112, 114, 105, 110, 116, 40, 98, 121, 116, 101, 115, 40, 100, 97, 116, 97, 41, 46, 100, 101, 99, 111, 100, 101, 40, 41, 32, 37, 37, 32, 114, 101, 112, 114, 40, 100, 97, 116, 97, 41, 41]
+print(bytes(data).decode() % repr(data))
+</code></pre>
+            <p>
+                In this case, the <code>data</code> variable stores the representation of
+                <code>'data = %s\nprint(bytes(data).decode() %% repr(data))'</code>.
+            </p>
+            <p>
+                For our purposes, we need to come up our own <code>decode</code> and
+                <code>representation</code> functions, as well as a way to store the data array
+                (there is no way to write numbers).
+            </p>
+            <h3>data</h3>
+            <p>
+                Although we can't write numbers directly in the source code, getting them is easy
+                enough. <code>+(()==())</code> is equal to <code>1</code>. Then we can make a series
+                of variables for each power of two that we need.
+            </p>
+            <pre class="lang-python"><code>Ja=+(()==())
+Jb=Ja+Ja
+Jc=Jb*Jb
+Jd=Jc*Jb
+Je=Jd*Jb
+Jf=Je*Jb
+Jg=Jf*Jb
+Jh=Jg*Jb
+Ji=Jh*Jb
+Jj=Ji*Jb
+Jk=Jj*Jb
+...</code></pre>
+            <p>
+                The variable names are intentional. Importantly, each variable name is predictable,
+                simplifying the <code>representation</code> function we'll have to write later
+                greatly. We then store each number as the sum of binary digits, resulting in code
+                like
+            </p>
+            <pre
+                class="lang-python"
+            ><code>İ=ß=+Ja+Jb+Jf,+Ja+Jb+Jf+Jg,+Ja+Jb+Jc+Jd+Jf+Jg,+Jc+Jf+Jg,+Ja+Jd+Jf+Jg,+Jb+Jc+Jd+Jf+Jg,+Ja+Jb+Jc+Jf+Jg,+Jb+Jd+Je+Jf,+Ja+Je+Jf,+Je+Jf,+Jb+Je+Jf,+Jb+Jc+Je+Jf,+Jb+Jd,+Ja+Jb+Jf,+Ja+Jc+Jf,+Ja+Jc+Jf, ...</code></pre>
+            <p>
+                The stored data makes up the majority of the submission and is visible as the chunk
+                of cyrillic letters and N's (mapping to the variable names and the plus character
+                <code>+</code> respectively). Of course, nothing is stopping us from just encoding
+                numbers in unary but that would've bloated the final submission size to nearly 8MB.
+            </p>
+            <h2>decode</h2>
+            <p>
+                The only way to loop over the whole data array is through the use of list
+                comprehensions, since miraculously we can use both the character combinations
+                <code>1for</code> (corresponding to the currently unassigned <code>U+46599</code>)
+                and <code>3]in</code> (corresponding to the even more unassigned
+                <code>U+ec255</code>).
+            </p>
+            <p>
+                The actual code to decode is not too complicated. We use the
+                <code>%c</code> formatting operator to convert each number to the corresponding
+                character.
+            </p>
+            <pre
+                class="lang-python"
+            ><code>*(((â:=İ[C]),(İ:=İ[à:I]),(ãã:=ãã+á%â))*1for[_3]in'?'*La),</code></pre>
+            <p>
+                We also can't loop over the array <code>İ</code> directly, so this code just
+                repeatedly gets the first element, modifying the data array each loop. As you can
+                see, the variable <code>ãã</code> stores the resulting decoded code. And thats
+                <code>decode</code> done!
+            </p>
+            <h2>representation</h2>
+            <p>
+                <code>representation</code> is similar to <code>decode</code>, we'll still need to
+                loop over the whole data array again, one character at a time. But this time the
+                loop body is more complex as we need to write out each character using the powers of
+                two we created earlier.
+            </p>
+            <pre
+                class="lang-python"
+            ><code>*(((â:=İ[C]),(İ:=İ[à:I]),(é:=''),(ê:=Ja),(ë:=Jb-Jb),(*((((é:=é+(Ns+á%(Ö+ë+ë//(Ja+Jd)*(Ja+Jb+Jc)))*(ê&â>C·)),(ê:=ê*Jb),(ë:=ë+Ja)))*1for[_3]in'?'*Jf),),(ã:=ã+é+Ck))*1for[_3]in'?'*La),</code></pre>
+            <p>
+                This code isn't too bad, we just need two nested loops now. The inner loop loops 32
+                times, wih the <code>ê</code> variable keeping track of the current bit. We check if
+                a bit is present by using the bitwise and operation. Outputting the name of the
+                variables is a little tricky: for example <code>Ja</code> maps to
+                <code>'с'</code> (U+0441 CYRILLIC SMALL LETTER ES). We choose the variables
+                strategically to make the formula as simple as possible, the nth power of two maps
+                to character code <code>1089 + n + n // 9 * 7</code> (that is, nearly linear but we
+                need to skip two characters a partway through). Other than that, the algorithm is
+                straightforward: for each bit we need to preprend a <code>+</code>, then also
+                separate each chararacter with a comma. This code will then serialize the list the
+                same way as in the source code!
+            </p>
+            <h2>Final</h2>
+            <p>Putting it all together, we get the following deobfuscated source code:</p>
+            <pre class="lang-python"><code>(C·,)=[C]=(()>()),
+_,à,Ns,å,_,Ck='CcNsCk'
+á='%'+à
+å='%'+å
+Ja=+(()==())
+Jb=Ja+Ja
+Jc=Jb*Jb
+Jd=Jc*Jb
+Je=Jd*Jb
+Jf=Je*Jb
+Jg=Jf*Jb
+Jh=Jg*Jb
+Ji=Jh*Jb
+Jj=Ji*Jb
+Jk=Jj*Jb
+Jl=Jk*Jb
+Jm=Jl*Jb
+Jn=Jm*Jb
+Jo=Jn*Jb
+Jp=Jo*Jb
+Jq=Jp*Jb
+Jr=Jq*Jb
+Jö=Jr*Jb
+Js=Jö*Jb
+İ=ß=~~~
+La=+++++Jc+Jj
+Ö=+Ja+Jg+Jk
+à=(()==())
+ãã=''
+[I]=La,
+*(((â:=İ[C]),(İ:=İ[à:I]),(ãã:=ãã+á%â))*1for[_3]in'?'*La),
+İ=ß
+ã=''
+à=(()==())
+*(((â:=İ[C]),(İ:=İ[à:I]),(é:=''),(ê:=Ja),(ë:=Jb-Jb),(*((((é:=é+(Ns+á%(Ö+ë+ë//(Ja+Jd)*(Ja+Jb+Jc)))*(ê&â>C·)),(ê:=ê*Jb),(ë:=ë+Ja)))*1for[_3]in'?'*Jf),),(ã:=ã+é+Ck))*1for[_3]in'?'*La),
+[C]=ãã%ã,
+{_:C}[C]</code></pre>
+            <p>
+                Then replacing <code>~~~</code> with the data array, changing the Ö character to the
+                right length, and finally encoding the code in the correct way yields the final
+                submission.
+            </p>
+        </article>
+    </body>
+</html>
