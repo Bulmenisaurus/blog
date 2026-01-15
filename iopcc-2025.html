@@ -185,7 +185,7 @@ print(decode(data).format(representation(data)))
 print(bytes(data).decode() % repr(data))
 </code></pre>
             <p>
-                In this case, the <code>data</code> variable stores the representation of
+                In this case, the <code>data</code> variable stores the bytes of
                 <code>'data = %s\nprint(bytes(data).decode() %% repr(data))'</code>.
             </p>
             <p>
@@ -193,7 +193,7 @@ print(bytes(data).decode() % repr(data))
                 <code>representation</code> functions, as well as a way to store the data array
                 (there is no way to write numbers).
             </p>
-            <h3>data</h3>
+            <h2>data</h2>
             <p>
                 Although we can't write numbers directly in the source code, getting them is easy
                 enough. <code>+(()==())</code> is equal to <code>1</code>. Then we can make a series
