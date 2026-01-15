@@ -163,7 +163,9 @@ A}
                 Notably there was no way to get numbers by themselves (they had to be part of these
                 multi-character combinations, as the bytes they were part of were only valid in
                 multi-byte unicode). For example the character 0 maps to <code>\xf0</code>, which
-                can only appear as byte one of a four byte unicode character like 𬌬.
+                unhelpfully can only appear as byte one of a four byte unicode character like 𬌬.
+                Likewise, all lowercase letters can only appear as part of multibyte character,
+                which makes writing any useful code difficult.
             </p>
             <h2>Quine</h2>
             <p>
