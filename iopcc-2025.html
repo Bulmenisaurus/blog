@@ -56,7 +56,7 @@
         <article>
             <h1>2025 IOPCC</h1>
             <p>
-                This year, me and orthoplex decided to try to submit something for the 3rd
+                This year, orthoplex and I decided to try to submit something for the 3rd
                 <a href="https://pyobfusc.com/">International Obfuscated Python Code Contest</a>.
                 You can see our submission here:
                 <a href="https://pyobfusc.com/submissions2025/1884885198/">quine.py</a>. I'll talk
@@ -79,8 +79,8 @@
     ~~~~~^^^
 KeyError: '#coding:1026\n#%Mók]~hì ... zÌhì'</code></pre>
             <p>
-                With the <code>KeyError</code> containing the entire contents of the file, escaped.
-                In this post I'll talk about how this little snippet of code works.
+                It's a quine! The <code>KeyError</code> contains the entire contents of the file,
+                albeit escaped. In this post I'll talk about how this little snippet of code works.
             </p>
             <h2>Codecs</h2>
             <p>
@@ -116,8 +116,8 @@ KeyError: '#coding:1026\n#%Mók]~hì ... zÌhì'</code></pre>
                 to restrict ourselves to valid utf8 source code as a challenge and for much better
                 portability.
                 <strong
-                    >This makes the main challenge of the program, making a quine under the
-                    restrictions of another codepage.
+                    >This is the main challenge of a program: writing valid utf-8 that transforms
+                    into valid python when decoded with a custom codec.
                 </strong>
             </p>
             <p>
@@ -173,9 +173,8 @@ A}
                 with the following general form:
             </p>
             <pre><code class="language-python">
-... prefix ...
 data = {encoded data}
-... suffix ...
+
 print(decode(data).format(representation(data)))
             </code></pre>
             <p>
@@ -192,8 +191,8 @@ print(bytes(data).decode() % repr(data))
             </p>
             <p>
                 For our purposes, we need to come up our own <code>decode</code> and
-                <code>representation</code> functions, as well as a way to store the data array
-                (there is no way to write numbers).
+                <code>representation</code> functions, as well as a way to store the data array as
+                there is no way to write numbers directly.
             </p>
             <h2>data</h2>
             <p>
@@ -223,16 +222,17 @@ Jk=Jj*Jb
             <p>
                 The stored data makes up the majority of the submission and is visible as the chunk
                 of cyrillic letters and N's (mapping to the variable names and the plus character
-                <code>+</code> respectively). Of course, nothing is stopping us from just encoding
-                numbers in unary but that would've bloated the final submission size to nearly 8MB.
+                <code>+</code> respectively).
+                <!-- Of course, nothing is stopping us from just encoding numbers in unary but that would've bloated the final submission size to nearly 8MB. -->
             </p>
             <h2>decode</h2>
             <p>
                 The only way to loop over the whole data array is through the use of list
-                comprehensions, since miraculously we can use both the character combinations
+                comprehensions. Miraculously, we can use both the character combinations
                 <code>1for</code> (corresponding to the currently unassigned <code>U+46599</code>)
                 and <code>3]in</code> (corresponding to the even more unassigned
-                <code>U+ec255</code>).
+                <code>U+ec255</code>). It's a stroke of luck that there is any way at all to write
+                <code>for</code> and <code>in</code> under our restrictions.
             </p>
             <p>
                 The actual code to decode is not too complicated. We use the
@@ -240,11 +240,13 @@ Jk=Jj*Jb
                 character.
             </p>
             <pre><code class="language-python">*(((â:=İ[C]),(İ:=İ[à:I]),(ãã:=ãã+á%â))*1for[_3]in'?'*La),</code></pre>
+            <p>This is essentially equivalent to the following code:</p>
+            <pre><code class="language-python">for i in range(len(data)):
+    result += '%c' % data[0]
+    data = data[1:]</code></pre>
             <p>
-                We also can't loop over the array <code>İ</code> directly, so this code just
-                repeatedly gets the first element, modifying the data array each loop. As you can
-                see, the variable <code>ãã</code> stores the resulting decoded code. And that's
-                <code>decode</code> done!
+                We're forced to modify <code>data</code> on each iteration since there's no easy way
+                to index into our array in an index that is not zero.
             </p>
             <h2>representation</h2>
             <p>
@@ -262,10 +264,30 @@ Jk=Jj*Jb
                 <code>'с'</code> (U+0441 CYRILLIC SMALL LETTER ES). We choose the variables
                 strategically to make the formula as simple as possible, the nth power of two maps
                 to character code <code>1089 + n + n // 9 * 7</code> (that is, nearly linear but we
-                need to skip two characters a partway through). Other than that, the algorithm is
+                need to skip two characters partway through). Other than that, the algorithm is
                 straightforward: for each bit we need to prepend a <code>+</code>, then also
                 separate each character with a comma. This code will then serialize the list the
                 same way as in the source code!
+            </p>
+            <p>This code is roughly equivalent to the following</p>
+            <pre><code class="language-python">result = ""
+
+for i in range(len(data)):
+    charcode = data[0]
+    character = ""
+
+    for bit in range(32):
+        if charcode & (1 << bit):
+            character += "N" + chr(1089 + bit + bit // 9 * 7)
+
+    result += character + "k"
+    data = data[1:]
+</code></pre>
+            <p>
+                Remember that since we need to output the source file, our
+                <code>representation</code> function has to encode back into the 1026 codec. So when
+                we mean a <code>+</code> to add the bits, that actually must appear as
+                <code>N</code>, and a comma will need to be output as a <code>k</code>.
             </p>
             <h2>Final</h2>
             <p>Putting it all together, we get the following deobfuscated source code:</p>
