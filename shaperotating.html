@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Shaperotating</title>
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/a11y-light.min.css"
+        />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
+        <script>
+            hljs.highlightAll();
+        </script>
+        <style>
+            article {
+                margin: 0 auto;
+                max-width: 80ch;
+            }
+
+            pre {
+                white-space: pre-wrap;
+                overflow-wrap: anywhere;
+            }
+
+            pre.no-wrap {
+                overflow-x: scroll;
+            }
+        </style>
+    </head>
+    <body>
+        <article>
+            <h1>Shaperotating</h1>
+            <p>
+                It's no secret that models today are great at text-based tasks. I wanted to find out
+                what it would take to get models to improve spatial reasoning. I'll explain how I
+                tried to use RLVR, tinker, Nemotron and Qwen to try to develop these capabilities.
+            </p>
+            <h2>Lesson 1: text is not suitable</h2>
+            <p>
+                Text has a lot of advantages over images. But in my testing it wasn't suitable. At
+                first I experimented with dungeon/game setups:
+            </p>
+            <ol>
+                <li><a href="https://github.com/microsoft/TextWorld">TextWorld</a></li>
+                <li><a href="https://github.com/allenai/scienceworld">ScienceWorld</a></li>
+                <li>My own implementation of dungeons with fog of war</li>
+            </ol>
+            <p>
+                However these weren't as close to the skill of "spatial reasoning" as I wanted.
+                Next, I tried instead something closer to pure "shape rotation". The models would
+                have to distinguish 3d shapes out of a set of candidates.
+            </p>
+            <pre class="nowrap">
+     Original               A                   B                   C         
+                                                                              
+                                                                              
+                                                                              
+                                                                              
+                    ######                                             
+    ##              ###                      ##             ###########    
+    ##              ###                      ##             ###########    
+                    ###                                                
+                    ###</pre
+            >
+            <p>
+                ASCII art turned out to be the wrong medium. Even at the simplest difficulty, models
+                like Nemotron 30B couldn't understand it.
+            </p>
+            <h2>Lesson 2: always try to figure out the root cause</h2>
+            <p>
+                Eventually I tried switching to a more understandable view, with a matrix-like API
+                where the model can see which cells are occupied or not under a given projection:
+            </p>
+            <pre><code>
+[+x]
+row0: .#
+row1: ##
+
+[+y]
+row0: ##.
+row1: .##
+
+[+z]
+row0: ..#
+row1: ###</code></pre>
+            <p>
+                Testing with claude 4.8 reveals that this problem, though hard, is still solvable.
+                It managed to successfully determine equivalent shapes with near 100% accuracy.
+                However, training with Nemo, training stalled.
+                <img src="./images/image 3.png" alt="" />
+                Looking at the scores of individual seeds, a clear pattern begins to emerge. The
+                eight seeds are split nearly perfectly in half between two categories: 70-100% pass
+                rate, and 0-30% pass rate. Investigating further reveals the source of the issue. In
+                this specific ruleset, I had given Nemo the ability to look at only one projection
+                axis per tool call. For some reason, Nemo learned to always look along the +x axis.
+                For some seeds, this immediately yielded two identical shapes. These are the seeds
+                with high pass rates. For other seeds, the single view wasn't enough. In the worst
+                case (the cyan colored seed) four out the five shapes look identical.
+            </p>
+            <p>
+                The pass rate for the entire problem set was deceptive here, because testing
+                individual problems would've revealed that most are either ~0% or ~100% pass rate,
+                which doesn't provide any gradient for GRPO to work with.
+            </p>
+            <h2>Lesson 3: Don't try to patch reward hacking with the system prompt</h2>
+            <p>
+                Looking at the failure from before, it might seem like changing the system prompt
+                could solve this issue. However, solving reward hacking (which this is) is not the
+                right layer to solve the problem at. In testing, I found a lot of problems that were
+                defeatable by some variant of reward-hacking or memorization. In all cases, changing
+                the system prompt didn't solve the issue, worse, the model learns to lend less
+                credence to the system prompt!
+            </p>
+            <h2>Lesson 3: keep difficulty progression small & incremental</h2>
+            <p>
+                At this point I switched to image input. (which necessitated the switch to Qwen as
+                tinker's Nemo didn't support image input) My first attempt was again shape rotation.
+                The model would be given a reference shape, and a second shape to rotate. The
+                problem was that at difficulty one I made the solution a rotation along a single
+                axis. On training, this proved nearly trivial: the model could pretty reliably learn
+                to gather observations and rotate on small increments. However, bumping this up to
+                the full 3 degrees of freedom was way too difficult! The behaviors didn't transfer
+                at all.
+            </p>
+            <h2>Lesson 4: Don't let it memorize</h2>
+            <p>
+                Another task I tried to train on was one where the model would have to return the
+                coordinates occupied.
+            </p>
+            <img src="./Notion/Rotating shapes with Qwen and Nemo/image 7.png" alt="" />
+            <p>
+                The way to reward hack this might not be obvious at first. If you don't vary camera
+                position between trials (azimuth, elevation) the model just learns to associate
+                positions visually with coordinates, skipping the middle-man (axes). Testing the
+                trained model on a held-out set with varied camera angles, accuracy dropped to
+                nearly zero.
+            </p>
+        </article>
+    </body>
+</html>
