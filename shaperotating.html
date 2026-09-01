@@ -18,6 +18,11 @@
                 max-width: 80ch;
             }
 
+            article img {
+                max-height: 16em;
+                max-width: 100%;
+            }
+
             pre {
                 white-space: pre-wrap;
                 overflow-wrap: anywhere;
@@ -72,7 +77,7 @@
                 Eventually I tried switching to a more understandable view, with a matrix-like API
                 where the model can see which cells are occupied or not under a given projection:
             </p>
-            <pre><code>
+            <pre>
 [+x]
 row0: .#
 row1: ##
@@ -83,12 +88,15 @@ row1: .##
 
 [+z]
 row0: ..#
-row1: ###</code></pre>
+row1: ###</pre
+            >
             <p>
                 Testing with claude 4.8 reveals that this problem, though hard, is still solvable.
                 It managed to successfully determine equivalent shapes with near 100% accuracy.
                 However, training with Nemo, training stalled.
-                <img src="./images/image 3.png" alt="" />
+            </p>
+            <img src="./images/image 3.png" alt="Graph of reward curves during a training run." />
+            <p>
                 Looking at the scores of individual seeds, a clear pattern begins to emerge. The
                 eight seeds are split nearly perfectly in half between two categories: 70-100% pass
                 rate, and 0-30% pass rate. Investigating further reveals the source of the issue. In
@@ -128,13 +136,47 @@ row1: ###</code></pre>
                 Another task I tried to train on was one where the model would have to return the
                 coordinates occupied.
             </p>
-            <img src="./Notion/Rotating shapes with Qwen and Nemo/image 7.png" alt="" />
+            <img
+                src="./images/image 7.png"
+                alt="3D isometric view of a chess board. Some tiles are occupied by cubes."
+            />
             <p>
                 The way to reward hack this might not be obvious at first. If you don't vary camera
                 position between trials (azimuth, elevation) the model just learns to associate
                 positions visually with coordinates, skipping the middle-man (axes). Testing the
                 trained model on a held-out set with varied camera angles, accuracy dropped to
                 nearly zero.
+            </p>
+            <h2>Lesson 5: Experiment with purpose</h2>
+            <img src="./images/lego.png" alt="3D isometric view of lego bricks" />
+            <p>
+                There's an imbalance between training time and development time. In my experience,
+                it's easy to fall into the trap of setting off multiple hour long training runs and
+                completely checking out. It's completely automatic, why shouldn't I? But it's worth
+                spending more time planning each run. You have to make the result of each experiment
+                gives you some actionable results.
+            </p>
+            <p>
+                For example, this means sacrificing some time to figure out the best
+                hyperparameters. I found that around <code>5e-5</code> produced the best results. (I
+                think this might be relatively high? But I also used relatively short runs for
+                testing, ~20-50 steps). Other things I tested:
+            </p>
+            <ul>
+                <li>
+                    GRPO group and batch size (8 &times; 8 provides a good balance of learning &
+                    compute)
+                </li>
+                <li>Image label size (increased for legibility)</li>
+                <li>
+                    Preview location, color, size, etc (model was confusing adjacent coordinates)
+                </li>
+                <li>Continuous difficulty scaling (smoother gradient)</li>
+                <li>Camera azimuth & elevation</li>
+            </ul>
+            <p>
+                The aim is each experiment should increase the information you have access to,
+                rather than banking on a run randomly working.
             </p>
         </article>
     </body>
