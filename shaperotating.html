@@ -44,9 +44,13 @@
             <img src="./images/lego.png" alt="3D isometric view of lego bricks" />
 
             <p>
-                I've managed to achieve some partial success: with posttraining, Qwen 3.8 manages to
-                succesfully
+                I've managed to achieve some partial success: with post-training through tinker and
+                custom RLVR envs, I improved Qwen 3.6 performance on a version of this task with
+                three turns from a performance of below 10% to success on over 80% of trials. To
+                ensure memorization wasn't the cause of the performance, I made sure in each
+                training step during GRPO, seeds would be randomized.
             </p>
+
             <h2>Lesson 1: text is not suitable</h2>
             <p>
                 Text has a lot of advantages over images. But in my testing it wasn't suitable. At
@@ -62,7 +66,7 @@
                 Next, I tried instead something closer to pure "shape rotation". The models would
                 have to distinguish 3d shapes out of a set of candidates.
             </p>
-            <pre class="nowrap">
+            <pre class="no-wrap">
      Original               A                   B                   C         
                                                                               
                                                                               
@@ -77,6 +81,10 @@
             <p>
                 ASCII art turned out to be the wrong medium. Even at the simplest difficulty, models
                 like Nemotron 30B couldn't understand it.
+            </p>
+            <p>
+                <strong>The fix:</strong> stop trying to draw pictures in text. My next attempt
+                dropped the drawing entirely in favor of describing the shape explicitly.
             </p>
             <h2>Lesson 2: always try to figure out the root cause</h2>
             <p>
@@ -100,6 +108,10 @@ row1: ###</pre
                 Testing with claude 4.8 reveals that this problem, though hard, is still solvable.
                 It managed to successfully determine equivalent shapes with near 100% accuracy.
                 However, training with Nemo, training stalled.
+            </p>
+            <p>
+                <strong>The fix:</strong> make sure to look at failing rollouts, especially when
+                training stalls. It can reveal issues that reward curves by themselves can't catch.
             </p>
             <img src="./images/image 3.png" alt="Graph of reward curves during a training run." />
             <p>
@@ -126,18 +138,24 @@ row1: ###</pre
                 the system prompt didn't solve the issue, worse, the model learns to lend less
                 credence to the system prompt!
             </p>
-            <h2>Lesson 3: keep difficulty progression small & incremental</h2>
+            <h2>Lesson 4: keep difficulty progression small &amp; incremental</h2>
             <p>
-                At this point I switched to image input. (which necessitated the switch to Qwen as
-                tinker's Nemo didn't support image input) My first attempt was again shape rotation.
-                The model would be given a reference shape, and a second shape to rotate. The
-                problem was that at difficulty one I made the solution a rotation along a single
-                axis. On training, this proved nearly trivial: the model could pretty reliably learn
-                to gather observations and rotate on small increments. However, bumping this up to
-                the full 3 degrees of freedom was way too difficult! The behaviors didn't transfer
-                at all.
+                Because text and ASCII were dead ends, at this point I decided to add image support
+                to the pipeline. This involved adding a new schema option to our env format, as well
+                as handling different image formats for each provider. This also necessitated a
+                migration from Nemotron to a multi-modal model - specifically Qwen 3.6, as tinker's
+                Nemo didn't support image input. The PR merged after review and made the below
+                experiments possible.
             </p>
-            <h2>Lesson 4: Don't let it memorize</h2>
+            <p>
+                My first attempt with images was again shape rotation. The model would be given a
+                reference shape, and a second shape to rotate. The problem was that at difficulty
+                one I made the solution a rotation along a single axis. On training, this proved
+                nearly trivial: the model could pretty reliably learn to gather observations and
+                rotate on small increments. However, bumping this up to the full 3 degrees of
+                freedom was way too difficult! The behaviors didn't transfer at all.
+            </p>
+            <h2>Lesson 5: Don't let it memorize</h2>
             <p>
                 Another task I tried to train on was one where the model would have to return the
                 coordinates occupied.
@@ -153,7 +171,7 @@ row1: ###</pre
                 trained model on a held-out set with varied camera angles, accuracy dropped to
                 nearly zero.
             </p>
-            <h2>Lesson 5: Experiment with purpose</h2>
+            <h2>Lesson 6: Experiment with purpose</h2>
             <p>
                 There's an imbalance between training time and development time. In my experience,
                 it's easy to fall into the trap of setting off multiple hour long training runs and
@@ -183,6 +201,16 @@ row1: ###</pre
                 The aim is each experiment should increase the information you have access to,
                 rather than banking on a run randomly working.
             </p>
+            <p>The main thing limiting me here was time. Given more time, I would've tried:</p>
+            <ul>
+                <li>Qwen 3.8 instead of 3.6</li>
+                <li>
+                    Training on more foundational tasks first, like the chessboard recognition under
+                    perspective
+                </li>
+                <li>Per-turn scoring instead of per-rollout for finer-grained scoring</li>
+                <li>and more...</li>
+            </ul>
         </article>
     </body>
 </html>
